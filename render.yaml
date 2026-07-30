@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: syead-portfolio
+    runtime: node
+    plan: starter
+    region: singapore
+    buildCommand: npm install && npm run build
+    startCommand: ./scripts/render-start.sh
+    healthCheckPath: /
+    autoDeploy: true
+    disk:
+      name: portfolio-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:/var/data/portfolio.db
+      - key: DATA_DIR
+        value: /var/data
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: ADMIN_NAME
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false

@@ -1,0 +1,36 @@
+SYEAD PORTFOLIO FULL-STACK — WINDOWS SETUP
+
+1. Install Node.js 20 or newer.
+2. Extract this ZIP and open the folder in VS Code.
+3. Open the VS Code terminal.
+4. Run:
+
+   npm install
+
+5. Copy .env.example to .env:
+
+   Copy-Item .env.example .env
+
+6. Open .env and change:
+   - AUTH_SECRET
+   - ADMIN_PASSWORD
+
+7. Create the database and administrator:
+
+   npm run db:push
+   npm run seed
+
+8. Start the website:
+
+   npm run dev
+
+9. Open:
+   Website: http://localhost:3000
+   Admin:   http://localhost:3000/admin/login
+
+Use ADMIN_EMAIL and ADMIN_PASSWORD from your .env file.
+
+IMPORTANT FOR LIVE HOSTING
+- Use PostgreSQL instead of SQLite.
+- Use Cloudinary or Amazon S3 instead of local uploads.
+- Never upload your .env file to GitHub.
